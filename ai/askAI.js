@@ -1,25 +1,28 @@
 import fetch from "node-fetch";
 import fs from "fs";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const endpoint = process.env.AZURE_OPENAI_ENDPOINT.trim();
 const apiKey = process.env.AZURE_OPENAI_API_KEY;
 const deployment = process.env.AZURE_OPENAI_DEPLOYMENT_NAME;
 const apiVersion = process.env.AZURE_OPENAI_API_VERSION;
 
-console.log("DEBUG endpoint:", endpoint);
-console.log("DEBUG deployment:", deployment);
-console.log("DEBUG apiVersion:", apiVersion);
+if (!apiKey) {
+  throw new Error("Missing AZURE_OPENAI_API_KEY");
+}
 
-
-// Load prompts and knowledge
-const systemPrompt = fs.readFileSync("./prompts/systemPrompt.txt", "utf8");
-const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
-const attendancePolicy = fs.readFileSync("./knowledge/attendance.txt", "utf8");
-const holidaysPolicy = fs.readFileSync("./knowledge/holidays.txt", "utf8");
-const contactsInfo = fs.readFileSync("./knowledge/contacts.txt", "utf8");
+const systemPrompt = fs.readFileSync(path.join(__dirname, "../prompts/systemPrompt.txt"), "utf8");
+const ptoPolicy = fs.readFileSync(path.join(__dirname, "../knowledge/pto.txt"), "utf8");
+const attendancePolicy = fs.readFileSync(path.join(__dirname, "../knowledge/attendance.txt"), "utf8");
+const holidaysPolicy = fs.readFileSync(path.join(__dirname, "../knowledge/holidays.txt"), "utf8");
+const contactsInfo = fs.readFileSync(path.join(__dirname, "../knowledge/contacts.txt"), "utf8");
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
