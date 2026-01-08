@@ -25,8 +25,6 @@ const hoursPolicy = fs.readFileSync("./knowledge/hours-of-operation.txt", "utf8"
 const juryDutyPolicy = fs.readFileSync("./knowledge/jury-duty.txt", "utf8");
 const militaryLeavePolicy = fs.readFileSync("./knowledge/military-leave.txt", "utf8");
 const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
-
-// Additional handbook sections
 const coreValuesPolicy = fs.readFileSync("./knowledge/core-values-and-employment.txt", "utf8");
 const conductPolicy = fs.readFileSync("./knowledge/workplace-conduct-and-confidentiality.txt", "utf8");
 const compensationPolicy = fs.readFileSync("./knowledge/compensation-and-benefits.txt", "utf8");
@@ -40,14 +38,22 @@ const athenaOneGuide = fs.readFileSync("./knowledge/athenaOne-homepage.txt", "ut
 // Internal FAQ
 const internalFAQ = fs.readFileSync("./knowledge/internal-faq.txt", "utf8");
 
-// Drug inventory transfer SOP
+// Drug inventory SOP
 const drugItemTransfer = fs.readFileSync("./knowledge/drug-item-transfer.txt", "utf8");
+
+// Endophthalmitis Injection SOP
+const endophthalmitisSOP = fs.readFileSync("./knowledge/sop-endophthalmitis-injections.txt", "utf8");
+
+// Debug verification
+console.log("Loaded drug SOP length:", drugItemTransfer.length);
+console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
   const handbookContent =
-    "EMPLOYEE HANDBOOK AND INTERNAL GUIDANCE:\n\n" +
+    "INTERNAL DOCUMENTATION:\n\n" +
+
     attendancePolicy + "\n\n" +
     bereavementPolicy + "\n\n" +
     contactsInfo + "\n\n" +
@@ -57,18 +63,27 @@ export async function askAI(question) {
     juryDutyPolicy + "\n\n" +
     militaryLeavePolicy + "\n\n" +
     ptoPolicy + "\n\n" +
+
     coreValuesPolicy + "\n\n" +
     conductPolicy + "\n\n" +
     compensationPolicy + "\n\n" +
     leavePolicy + "\n\n" +
     operationsPolicy + "\n\n" +
     safetyPolicy + "\n\n" +
-    "ATHENAONE HOME PAGE GUIDE:\n" +
+
+    "ATHENAONE GUIDE:\n" +
     athenaOneGuide + "\n\n" +
+
     "INTERNAL FAQ:\n" +
     internalFAQ + "\n\n" +
-    "DRUG ITEM TRANSFER PROCEDURE:\n" +
-    drugItemTransfer;
+
+    "DRUG ITEM TRANSFER SOP:\n" +
+    drugItemTransfer + "\n\n" +
+
+    "ENDOPHTHALMITIS INJECTION SOP:\n" +
+    endophthalmitisSOP;
+
+  console.log("Knowledge payload size:", handbookContent.length);
 
   const messages = [
     { role: "system", content: systemPrompt },
