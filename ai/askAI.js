@@ -48,6 +48,8 @@ const injectionPreferencesSOP = fs.readFileSync("./knowledge/sop-injection-prefe
 const laserProcedureSOP = fs.readFileSync("./knowledge/sop-laser-procedure.txt", "utf8");
 const lotusTrialSOP = fs.readFileSync("./knowledge/sop-lotus-trial.txt", "utf8");
 const injectionScreeningSOP = fs.readFileSync("./knowledge/sop-injection-screening.txt", "utf8");
+
+// ✅ OCT + Ozurdex
 const octProcedureSOP = fs.readFileSync("./knowledge/sop-oct-procedure.txt", "utf8");
 const ozurdexInjectionsSOP = fs.readFileSync("./knowledge/sop-ozurdex-injections.txt", "utf8");
 
