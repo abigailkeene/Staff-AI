@@ -1,43 +1,49 @@
 import fetch from "node-fetch";
 import fs from "fs";
 import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
-
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const endpoint = process.env.AZURE_OPENAI_ENDPOINT.trim();
 const apiKey = process.env.AZURE_OPENAI_API_KEY;
 const deployment = process.env.AZURE_OPENAI_DEPLOYMENT_NAME;
 const apiVersion = process.env.AZURE_OPENAI_API_VERSION;
 
-if (!apiKey) {
-  throw new Error("Missing AZURE_OPENAI_API_KEY");
-}
+console.log("DEBUG endpoint:", endpoint);
+console.log("DEBUG deployment:", deployment);
+console.log("DEBUG apiVersion:", apiVersion);
 
-const systemPrompt = fs.readFileSync(path.join(__dirname, "../prompts/systemPrompt.txt"), "utf8");
-const ptoPolicy = fs.readFileSync(path.join(__dirname, "../knowledge/pto.txt"), "utf8");
-const attendancePolicy = fs.readFileSync(path.join(__dirname, "../knowledge/attendance.txt"), "utf8");
-const holidaysPolicy = fs.readFileSync(path.join(__dirname, "../knowledge/holidays.txt"), "utf8");
-const contactsInfo = fs.readFileSync(path.join(__dirname, "../knowledge/contacts.txt"), "utf8");
+// Load system prompt
+const systemPrompt = fs.readFileSync("./prompts/systemPrompt.txt", "utf8");
+
+// Load handbook knowledge
+const attendancePolicy = fs.readFileSync("./knowledge/attendance.txt", "utf8");
+const bereavementPolicy = fs.readFileSync("./knowledge/bereavement-leave.txt", "utf8");
+const contactsInfo = fs.readFileSync("./knowledge/contacts.txt", "utf8");
+const dressCodePolicy = fs.readFileSync("./knowledge/dress-code.txt", "utf8");
+const holidaysPolicy = fs.readFileSync("./knowledge/holidays.txt", "utf8");
+const hoursPolicy = fs.readFileSync("./knowledge/hours-of-operation.txt", "utf8");
+const juryDutyPolicy = fs.readFileSync("./knowledge/jury-duty.txt", "utf8");
+const militaryLeavePolicy = fs.readFileSync("./knowledge/military-leave.txt", "utf8");
+const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
+  const handbookContent =
+    "EMPLOYEE HANDBOOK AND INTERNAL GUIDANCE:\n\n" +
+    "ATTENDANCE POLICY:\n" + attendancePolicy + "\n\n" +
+    "BEREAVEMENT LEAVE POLICY:\n" + bereavementPolicy + "\n\n" +
+    "CONTACTS:\n" + contactsInfo + "\n\n" +
+    "DRESS CODE POLICY:\n" + dressCodePolicy + "\n\n" +
+    "HOLIDAYS POLICY:\n" + holidaysPolicy + "\n\n" +
+    "HOURS OF OPERATION:\n" + hoursPolicy + "\n\n" +
+    "JURY DUTY POLICY:\n" + juryDutyPolicy + "\n\n" +
+    "MILITARY LEAVE POLICY:\n" + militaryLeavePolicy + "\n\n" +
+    "PTO POLICY:\n" + ptoPolicy;
+
   const messages = [
     { role: "system", content: systemPrompt },
-    {
-      role: "system",
-      content:
-        "EMPLOYEE HANDBOOK AND INTERNAL GUIDANCE:\n\n" +
-        ptoPolicy + "\n\n" +
-        attendancePolicy + "\n\n" +
-        holidaysPolicy + "\n\n" +
-        contactsInfo
-    },
+    { role: "system", content: handbookContent },
     { role: "user", content: question }
   ];
 
