@@ -45,10 +45,11 @@ const drugItemTransfer = fs.readFileSync("./knowledge/drug-item-transfer.txt", "
 const endophthalmitisSOP = fs.readFileSync("./knowledge/sop-endophthalmitis-injections.txt", "utf8");
 const followUpScreeningSOP = fs.readFileSync("./knowledge/sop-follow-up-screening.txt", "utf8");
 const injectionPreferencesSOP = fs.readFileSync("./knowledge/sop-injection-preferences-per-doctor.txt", "utf8");
-const injectionScreeningSOP = fs.readFileSync("./knowledge/sop-injection-screening.txt", "utf8");
 const laserProcedureSOP = fs.readFileSync("./knowledge/sop-laser-procedure.txt", "utf8");
 const lotusTrialSOP = fs.readFileSync("./knowledge/sop-lotus-trial.txt", "utf8");
-const newPatientScreeningSOP = fs.readFileSync("./knowledge/sop-new-patient-screening.txt", "utf8");
+const injectionScreeningSOP = fs.readFileSync("./knowledge/sop-injection-screening.txt", "utf8");
+const octProcedureSOP = fs.readFileSync("./knowledge/sop-oct-procedure.txt", "utf8");
+const ozurdexInjectionsSOP = fs.readFileSync("./knowledge/sop-ozurdex-injections.txt", "utf8");
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
@@ -58,7 +59,8 @@ console.log("Loaded injection preferences SOP length:", injectionPreferencesSOP.
 console.log("Loaded injection screening SOP length:", injectionScreeningSOP.length);
 console.log("Loaded laser SOP length:", laserProcedureSOP.length);
 console.log("Loaded LOTUS Trial SOP length:", lotusTrialSOP.length);
-console.log("Loaded new patient screening SOP length:", newPatientScreeningSOP.length);
+console.log("Loaded OCT SOP length:", octProcedureSOP.length);
+console.log("Loaded Ozurdex SOP length:", ozurdexInjectionsSOP.length);
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
@@ -101,17 +103,20 @@ export async function askAI(question) {
     "INJECTION PREFERENCES SOP:\n" +
     injectionPreferencesSOP + "\n\n" +
 
-    "INJECTION SCREENING SOP:\n" +
-    injectionScreeningSOP + "\n\n" +
-
     "LASER PROCEDURE SOP:\n" +
     laserProcedureSOP + "\n\n" +
+
+    "INJECTION SCREENING SOP:\n" +
+    injectionScreeningSOP + "\n\n" +
 
     "LOTUS TRIAL SOP:\n" +
     lotusTrialSOP + "\n\n" +
 
-    "NEW PATIENT SCREENING SOP:\n" +
-    newPatientScreeningSOP;
+    "OCT PROCEDURE SOP:\n" +
+    octProcedureSOP + "\n\n" +
+
+    "OZURDEX INJECTIONS SOP:\n" +
+    ozurdexInjectionsSOP;
 
   console.log("Knowledge payload size:", handbookContent.length);
 
