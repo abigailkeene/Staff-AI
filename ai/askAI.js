@@ -52,9 +52,9 @@ const octProcedureSOP = fs.readFileSync("./knowledge/sop-oct-procedure.txt", "ut
 const ozurdexInjectionsSOP = fs.readFileSync("./knowledge/sop-ozurdex-injections.txt", "utf8");
 const sterileBetadineSOP = fs.readFileSync("./knowledge/sop-sterile-betadine-preparation.txt", "utf8");
 const postOpScreeningSOP = fs.readFileSync("./knowledge/sop-post-op-screening.txt", "utf8");
-
-// ✅ NEW: Sterile Subconjunctival Injection Preparation SOP
 const sterileSubconjSOP = fs.readFileSync("./knowledge/sop-sterile-subconj-preparation.txt", "utf8");
+const optosAdvanceEditMergeSOP = fs.readFileSync("./knowledge/sop-optos-advance-edit-and-merge.txt", "utf8");
+
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
@@ -69,6 +69,8 @@ console.log("Loaded Ozurdex SOP length:", ozurdexInjectionsSOP.length);
 console.log("Loaded Sterile Betadine SOP length:", sterileBetadineSOP.length);
 console.log("Loaded Post-Op Screening SOP length:", postOpScreeningSOP.length);
 console.log("Loaded Sterile Subconj SOP length:", sterileSubconjSOP.length);
+console.log("Loaded Optos Advance Edit & Merge SOP length:", optosAdvanceEditMergeSOP.length);
+
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
@@ -134,6 +136,9 @@ export async function askAI(question) {
 
     "STERILE SUBCONJUNCTIVAL INJECTION PREPARATION SOP:\n" +
     sterileSubconjSOP;
+
+    "OPTOS ADVANCE EDIT & MERGE PATIENTS SOP:\n" +
+    optosAdvanceEditMergeSOP;
 
   console.log("Knowledge payload size:", handbookContent.length);
 
