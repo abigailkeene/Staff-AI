@@ -40,6 +40,9 @@ const athenaOneGuide = fs.readFileSync("./knowledge/athenaOne-homepage.txt", "ut
 // Internal FAQ
 const internalFAQ = fs.readFileSync("./knowledge/internal-faq.txt", "utf8");
 
+// Drug inventory transfer SOP
+const drugItemTransfer = fs.readFileSync("./knowledge/drug-item-transfer.txt", "utf8");
+
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
@@ -63,7 +66,9 @@ export async function askAI(question) {
     "ATHENAONE HOME PAGE GUIDE:\n" +
     athenaOneGuide + "\n\n" +
     "INTERNAL FAQ:\n" +
-    internalFAQ;
+    internalFAQ + "\n\n" +
+    "DRUG ITEM TRANSFER PROCEDURE:\n" +
+    drugItemTransfer;
 
   const messages = [
     { role: "system", content: systemPrompt },
