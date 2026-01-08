@@ -45,6 +45,7 @@ const drugItemTransfer = fs.readFileSync("./knowledge/drug-item-transfer.txt", "
 const endophthalmitisSOP = fs.readFileSync("./knowledge/sop-endophthalmitis-injections.txt", "utf8");
 const followUpScreeningSOP = fs.readFileSync("./knowledge/sop-follow-up-screening.txt", "utf8");
 const injectionPreferencesSOP = fs.readFileSync("./knowledge/sop-injection-preferences-per-doctor.txt", "utf8");
+const laserProcedureSOP = fs.readFileSync("./knowledge/sop-laser-procedure.txt", "utf8");
 
 // ✅ NEW SOP
 const injectionScreeningSOP = fs.readFileSync("./knowledge/sop-injection-screening.txt", "utf8");
@@ -55,6 +56,7 @@ console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
 console.log("Loaded follow-up SOP length:", followUpScreeningSOP.length);
 console.log("Loaded injection preferences SOP length:", injectionPreferencesSOP.length);
 console.log("Loaded injection screening SOP length:", injectionScreeningSOP.length);
+console.log("Loaded laser SOP length:", laserProcedureSOP.length);
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
@@ -96,6 +98,9 @@ export async function askAI(question) {
 
     "INJECTION PREFERENCES SOP:\n" +
     injectionPreferencesSOP + "\n\n" +
+
+    "LASER PROCEDURE SOP:\n" +
+    laserProcedureSOP;
 
     // ✅ NEW SOP INCLUDED
     "INJECTION SCREENING SOP:\n" +
