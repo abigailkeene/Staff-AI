@@ -48,10 +48,12 @@ const injectionPreferencesSOP = fs.readFileSync("./knowledge/sop-injection-prefe
 const laserProcedureSOP = fs.readFileSync("./knowledge/sop-laser-procedure.txt", "utf8");
 const lotusTrialSOP = fs.readFileSync("./knowledge/sop-lotus-trial.txt", "utf8");
 const injectionScreeningSOP = fs.readFileSync("./knowledge/sop-injection-screening.txt", "utf8");
-
-// ✅ OCT + Ozurdex
 const octProcedureSOP = fs.readFileSync("./knowledge/sop-oct-procedure.txt", "utf8");
 const ozurdexInjectionsSOP = fs.readFileSync("./knowledge/sop-ozurdex-injections.txt", "utf8");
+const sterileBetadineSOP = fs.readFileSync("./knowledge/sop-sterile-betadine-preparation.txt", "utf8");
+
+// ✅ NEW: Post-Op Screening SOP
+const postOpScreeningSOP = fs.readFileSync("./knowledge/sop-post-op-screening.txt", "utf8");
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
@@ -63,6 +65,8 @@ console.log("Loaded laser SOP length:", laserProcedureSOP.length);
 console.log("Loaded LOTUS Trial SOP length:", lotusTrialSOP.length);
 console.log("Loaded OCT SOP length:", octProcedureSOP.length);
 console.log("Loaded Ozurdex SOP length:", ozurdexInjectionsSOP.length);
+console.log("Loaded Sterile Betadine SOP length:", sterileBetadineSOP.length);
+console.log("Loaded Post-Op Screening SOP length:", postOpScreeningSOP.length);
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
@@ -118,7 +122,13 @@ export async function askAI(question) {
     octProcedureSOP + "\n\n" +
 
     "OZURDEX INJECTIONS SOP:\n" +
-    ozurdexInjectionsSOP;
+    ozurdexInjectionsSOP + "\n\n" +
+
+    "STERILE BETADINE PREPARATION SOP:\n" +
+    sterileBetadineSOP + "\n\n" +
+
+    "POST-OP SCREENING SOP:\n" +
+    postOpScreeningSOP;
 
   console.log("Knowledge payload size:", handbookContent.length);
 
