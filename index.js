@@ -1,4 +1,4 @@
-
+import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import { askAI } from "./ai/askAI.js";
@@ -6,6 +6,9 @@ import { askAI } from "./ai/askAI.js";
 dotenv.config();
 
 const app = express();
+app.use(express.json());
+
+app.use(cors());
 app.use(express.json());
 
 app.get("/health", (req, res) => {
@@ -34,3 +37,4 @@ const port = process.env.PORT || 5050;
 app.listen(port, () => {
   console.log(`🚀 Staff AI API running on port ${port}`);
 });
+
