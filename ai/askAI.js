@@ -25,6 +25,8 @@ const hoursPolicy = fs.readFileSync("./knowledge/hours-of-operation.txt", "utf8"
 const juryDutyPolicy = fs.readFileSync("./knowledge/jury-duty.txt", "utf8");
 const militaryLeavePolicy = fs.readFileSync("./knowledge/military-leave.txt", "utf8");
 const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
+
+// Additional handbook sections
 const coreValuesPolicy = fs.readFileSync("./knowledge/core-values-and-employment.txt", "utf8");
 const conductPolicy = fs.readFileSync("./knowledge/workplace-conduct-and-confidentiality.txt", "utf8");
 const compensationPolicy = fs.readFileSync("./knowledge/compensation-and-benefits.txt", "utf8");
@@ -38,15 +40,17 @@ const athenaOneGuide = fs.readFileSync("./knowledge/athenaOne-homepage.txt", "ut
 // Internal FAQ
 const internalFAQ = fs.readFileSync("./knowledge/internal-faq.txt", "utf8");
 
-// Drug inventory SOP
+// SOPs
 const drugItemTransfer = fs.readFileSync("./knowledge/drug-item-transfer.txt", "utf8");
-
-// Endophthalmitis Injection SOP
 const endophthalmitisSOP = fs.readFileSync("./knowledge/sop-endophthalmitis-injections.txt", "utf8");
+const followUpScreeningSOP = fs.readFileSync("./knowledge/sop-follow-up-screening.txt", "utf8");
+const injectionPreferencesSOP = fs.readFileSync("./knowledge/sop-injection-preferences-per-doctor.txt", "utf8");
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
 console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
+console.log("Loaded follow-up SOP length:", followUpScreeningSOP.length);
+console.log("Loaded injection preferences SOP length:", injectionPreferencesSOP.length);
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
@@ -81,7 +85,13 @@ export async function askAI(question) {
     drugItemTransfer + "\n\n" +
 
     "ENDOPHTHALMITIS INJECTION SOP:\n" +
-    endophthalmitisSOP;
+    endophthalmitisSOP + "\n\n" +
+
+    "FOLLOW-UP SCREENING SOP:\n" +
+    followUpScreeningSOP + "\n\n" +
+
+    "INJECTION PREFERENCES SOP:\n" +
+    injectionPreferencesSOP;
 
   console.log("Knowledge payload size:", handbookContent.length);
 
