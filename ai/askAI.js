@@ -26,6 +26,9 @@ const juryDutyPolicy = fs.readFileSync("./knowledge/jury-duty.txt", "utf8");
 const militaryLeavePolicy = fs.readFileSync("./knowledge/military-leave.txt", "utf8");
 const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
 
+// Load athenaOne guide knowledge
+const athenaOneGuide = fs.readFileSync("./knowledge/athenaOne-homepage.txt", "utf8");
+
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
@@ -39,7 +42,9 @@ export async function askAI(question) {
     "HOURS OF OPERATION:\n" + hoursPolicy + "\n\n" +
     "JURY DUTY POLICY:\n" + juryDutyPolicy + "\n\n" +
     "MILITARY LEAVE POLICY:\n" + militaryLeavePolicy + "\n\n" +
-    "PTO POLICY:\n" + ptoPolicy;
+    "PTO POLICY:\n" + ptoPolicy + "\n\n" +
+
+    "ATHENAONE HOME PAGE GUIDE:\n" + athenaOneGuide;
 
   const messages = [
     { role: "system", content: systemPrompt },
