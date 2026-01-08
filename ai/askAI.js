@@ -55,6 +55,8 @@ const postOpScreeningSOP = fs.readFileSync("./knowledge/sop-post-op-screening.tx
 const sterileSubconjSOP = fs.readFileSync("./knowledge/sop-sterile-subconj-preparation.txt", "utf8");
 const optosAdvanceEditMergeSOP = fs.readFileSync("./knowledge/sop-optos-advance-edit-and-merge.txt", "utf8");
 
+// RetinaOS Training Guide
+const retinaOSTrainingGuide = fs.readFileSync("./knowledge/retinaos-training-guide.txt", "utf8");
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
@@ -70,6 +72,7 @@ console.log("Loaded Sterile Betadine SOP length:", sterileBetadineSOP.length);
 console.log("Loaded Post-Op Screening SOP length:", postOpScreeningSOP.length);
 console.log("Loaded Sterile Subconj SOP length:", sterileSubconjSOP.length);
 console.log("Loaded Optos Advance Edit & Merge SOP length:", optosAdvanceEditMergeSOP.length);
+console.log("Loaded RetinaOS Training Guide length:", retinaOSTrainingGuide.length);
 
 
 export async function askAI(question) {
@@ -135,10 +138,13 @@ export async function askAI(question) {
     postOpScreeningSOP + "\n\n" +
 
     "STERILE SUBCONJUNCTIVAL INJECTION PREPARATION SOP:\n" +
-    sterileSubconjSOP;
+    sterileSubconjSOP + "\n\n" +
 
     "OPTOS ADVANCE EDIT & MERGE PATIENTS SOP:\n" +
-    optosAdvanceEditMergeSOP;
+    optosAdvanceEditMergeSOP + "\n\n" +
+
+    "RETINAOS TRAINING GUIDE:\n" +
+    retinaOSTrainingGuide;
 
   console.log("Knowledge payload size:", handbookContent.length);
 
