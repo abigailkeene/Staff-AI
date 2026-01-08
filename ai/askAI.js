@@ -26,7 +26,15 @@ const juryDutyPolicy = fs.readFileSync("./knowledge/jury-duty.txt", "utf8");
 const militaryLeavePolicy = fs.readFileSync("./knowledge/military-leave.txt", "utf8");
 const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
 
-// Load athenaOne guide knowledge
+// New handbook sections
+const coreValuesPolicy = fs.readFileSync("./knowledge/core-values-and-employment.txt", "utf8");
+const conductPolicy = fs.readFileSync("./knowledge/workplace-conduct-and-confidentiality.txt", "utf8");
+const compensationPolicy = fs.readFileSync("./knowledge/compensation-and-benefits.txt", "utf8");
+const leavePolicy = fs.readFileSync("./knowledge/additional-leave-policies.txt", "utf8");
+const operationsPolicy = fs.readFileSync("./knowledge/workplace-operations-and-discipline.txt", "utf8");
+const safetyPolicy = fs.readFileSync("./knowledge/workplace-safety-and-drug-policy.txt", "utf8");
+
+// athenaOne guide
 const athenaOneGuide = fs.readFileSync("./knowledge/athenaOne-homepage.txt", "utf8");
 
 export async function askAI(question) {
@@ -34,17 +42,23 @@ export async function askAI(question) {
 
   const handbookContent =
     "EMPLOYEE HANDBOOK AND INTERNAL GUIDANCE:\n\n" +
-    "ATTENDANCE POLICY:\n" + attendancePolicy + "\n\n" +
-    "BEREAVEMENT LEAVE POLICY:\n" + bereavementPolicy + "\n\n" +
-    "CONTACTS:\n" + contactsInfo + "\n\n" +
-    "DRESS CODE POLICY:\n" + dressCodePolicy + "\n\n" +
-    "HOLIDAYS POLICY:\n" + holidaysPolicy + "\n\n" +
-    "HOURS OF OPERATION:\n" + hoursPolicy + "\n\n" +
-    "JURY DUTY POLICY:\n" + juryDutyPolicy + "\n\n" +
-    "MILITARY LEAVE POLICY:\n" + militaryLeavePolicy + "\n\n" +
-    "PTO POLICY:\n" + ptoPolicy + "\n\n" +
-
-    "ATHENAONE HOME PAGE GUIDE:\n" + athenaOneGuide;
+    attendancePolicy + "\n\n" +
+    bereavementPolicy + "\n\n" +
+    contactsInfo + "\n\n" +
+    dressCodePolicy + "\n\n" +
+    holidaysPolicy + "\n\n" +
+    hoursPolicy + "\n\n" +
+    juryDutyPolicy + "\n\n" +
+    militaryLeavePolicy + "\n\n" +
+    ptoPolicy + "\n\n" +
+    coreValuesPolicy + "\n\n" +
+    conductPolicy + "\n\n" +
+    compensationPolicy + "\n\n" +
+    leavePolicy + "\n\n" +
+    operationsPolicy + "\n\n" +
+    safetyPolicy + "\n\n" +
+    "ATHENAONE HOME PAGE GUIDE:\n" +
+    athenaOneGuide;
 
   const messages = [
     { role: "system", content: systemPrompt },
