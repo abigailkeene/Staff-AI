@@ -26,7 +26,7 @@ const juryDutyPolicy = fs.readFileSync("./knowledge/jury-duty.txt", "utf8");
 const militaryLeavePolicy = fs.readFileSync("./knowledge/military-leave.txt", "utf8");
 const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
 
-// New handbook sections
+// Additional handbook sections
 const coreValuesPolicy = fs.readFileSync("./knowledge/core-values-and-employment.txt", "utf8");
 const conductPolicy = fs.readFileSync("./knowledge/workplace-conduct-and-confidentiality.txt", "utf8");
 const compensationPolicy = fs.readFileSync("./knowledge/compensation-and-benefits.txt", "utf8");
@@ -36,6 +36,9 @@ const safetyPolicy = fs.readFileSync("./knowledge/workplace-safety-and-drug-poli
 
 // athenaOne guide
 const athenaOneGuide = fs.readFileSync("./knowledge/athenaOne-homepage.txt", "utf8");
+
+// Internal FAQ
+const internalFAQ = fs.readFileSync("./knowledge/internal-faq.txt", "utf8");
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
@@ -58,7 +61,9 @@ export async function askAI(question) {
     operationsPolicy + "\n\n" +
     safetyPolicy + "\n\n" +
     "ATHENAONE HOME PAGE GUIDE:\n" +
-    athenaOneGuide;
+    athenaOneGuide + "\n\n" +
+    "INTERNAL FAQ:\n" +
+    internalFAQ;
 
   const messages = [
     { role: "system", content: systemPrompt },
