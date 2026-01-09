@@ -1,10 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import { askAI } from "./ai/askAI.js";
 
 dotenv.config();
 
 const app = express();
+
+// Enable CORS for GitHub Pages frontend
+app.use(cors({
+  origin: "https://abigailkeene.github.io"
+}));
+
 app.use(express.json());
 
 app.get("/health", (req, res) => {
