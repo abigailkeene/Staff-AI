@@ -1,14 +1,13 @@
-import cors from "cors";
+
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
+import fs from "fs";
 import { askAI } from "./ai/askAI.js";
 
 dotenv.config();
 
 const app = express();
-app.use(express.json());
-
-app.use(cors());
 app.use(express.json());
 
 app.get("/health", (req, res) => {
@@ -34,7 +33,31 @@ app.post("/ask", async (req, res) => {
 });
 
 const port = process.env.PORT || 5050;
+
+// Document download route
+app.get("/download/:file", (req, res) => {
+  const fileMap = {
+    "remote-work-timesheet": "Remote_Work_Timesheet.pdf",
+    "pto-request-form": "PTO_Request_Form.pdf",
+    "expense-reimbursement": "Expense_Reimbursement_Form.pdf"
+  };
+
+  const fileKey = req.params.file;
+  const filename = fileMap[fileKey];
+
+  if (!filename) {
+    return res.status(404).send("File not found");
+  }
+
+  const filePath = path.join(process.cwd(), "documents", filename);
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).send("File missing on server");
+  }
+
+  res.download(filePath);
+});
+
 app.listen(port, () => {
   console.log(`🚀 Staff AI API running on port ${port}`);
 });
-
