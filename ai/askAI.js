@@ -68,6 +68,15 @@ const rcopiaSPMTrainingManual = fs.readFileSync(
 //DrFirst - How to Download Sync Medications to ICP
 const drfirstSyncGuide = fs.readFileSync("./knowledge/drfirst-download-sync-medications-to-icp.txt", "utf8");
 
+//DrFirst - Managing Prescriber Agents
+const drfirstPrescriberAgentsGuide = fs.readFileSync("./knowledge/drfirst-managing-prescriber-agents.txt", "utf8");
+
+//DrFirst - Provider ID Proofing Experian
+const drfirstEpcsIdProofingGuide = fs.readFileSync("./knowledge/drfirst-epcs-provider-id-proofing-experian.txt", "utf8");
+
+// DrFirst - Provider Prep 10-22
+const providerPrepGuide = fs.readFileSync("./knowledge/provider-prep-10-22.txt", "utf8");
+
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
 console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
@@ -166,6 +175,12 @@ export async function askAI(question) {
 
     "DRFIRST DOWNLOAD & SYNC MEDICATIONS GUIDE:\n" +
     drfirstSyncGuide + "\n\n" +
+
+    "DRFIRST MANAGING PRESCRIBER AGENTS GUIDE:\n" +
+    drfirstPrescriberAgentsGuide + "\n\n" +
+
+    "PROVIDER PREP GO-LIVE GUIDE:\n" +
+    providerPrepGuide + "\n\n" +
 
 
   console.log("Knowledge payload size:", handbookContent.length);
