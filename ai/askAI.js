@@ -76,9 +76,6 @@ const drfirstPharmacyMessagesGuide = fs.readFileSync("./knowledge/drfirst-managi
 //CustomerCentral Signup Support
 const customerPortalSetupGuide = fs.readFileSync("./knowledge/customer-portal-setup-support.txt", "utf8");
 
-// Remote work timesheet
-const documentLibrary = fs.readFileSync("./knowledge/document-library.txt", "utf8");
-
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
@@ -193,9 +190,6 @@ export async function askAI(question) {
 
     "CUSTOMER PORTAL SETUP SUPPORT GUIDE:\n" +
     customerPortalSetupGuide + "\n\n" +
-
-    "INTERNAL DOCUMENT LIBRARY:\n" +
-    documentLibrary + "\n\n" +
 
 
   console.log("Knowledge payload size:", handbookContent.length);
