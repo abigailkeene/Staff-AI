@@ -25,8 +25,6 @@ const hoursPolicy = fs.readFileSync("./knowledge/hours-of-operation.txt", "utf8"
 const juryDutyPolicy = fs.readFileSync("./knowledge/jury-duty.txt", "utf8");
 const militaryLeavePolicy = fs.readFileSync("./knowledge/military-leave.txt", "utf8");
 const ptoPolicy = fs.readFileSync("./knowledge/pto.txt", "utf8");
-
-// Additional handbook sections
 const coreValuesPolicy = fs.readFileSync("./knowledge/core-values-and-employment.txt", "utf8");
 const conductPolicy = fs.readFileSync("./knowledge/workplace-conduct-and-confidentiality.txt", "utf8");
 const compensationPolicy = fs.readFileSync("./knowledge/compensation-and-benefits.txt", "utf8");
@@ -58,6 +56,18 @@ const optosAdvanceEditMergeSOP = fs.readFileSync("./knowledge/sop-optos-advance-
 // RetinaOS Training Guide
 const retinaOSTrainingGuide = fs.readFileSync("./knowledge/retinaos-training-guide.txt", "utf8");
 
+// SIS Inventory Upload Guide
+const sisInventoryUploadGuide = fs.readFileSync("./knowledge/how-to-upload-new-items-sis.txt", "utf8");
+
+// Rcopia Training Manual (NEW)
+const rcopiaSPMTrainingManual = fs.readFileSync(
+  "./knowledge/rcopia-4-spm-training-manual.txt",
+  "utf8"
+);
+
+//DrFirst - How to Download Sync Medications to ICP
+const drfirstSyncGuide = fs.readFileSync("./knowledge/drfirst-download-sync-medications-to-icp.txt", "utf8");
+
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
 console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
@@ -73,6 +83,8 @@ console.log("Loaded Post-Op Screening SOP length:", postOpScreeningSOP.length);
 console.log("Loaded Sterile Subconj SOP length:", sterileSubconjSOP.length);
 console.log("Loaded Optos Advance Edit & Merge SOP length:", optosAdvanceEditMergeSOP.length);
 console.log("Loaded RetinaOS Training Guide length:", retinaOSTrainingGuide.length);
+console.log("Loaded SIS Inventory Upload Guide length:", sisInventoryUploadGuide.length);
+console.log("Loaded Rcopia Training Manual length:", rcopiaSPMTrainingManual.length);
 
 
 export async function askAI(question) {
@@ -144,7 +156,17 @@ export async function askAI(question) {
     optosAdvanceEditMergeSOP + "\n\n" +
 
     "RETINAOS TRAINING GUIDE:\n" +
-    retinaOSTrainingGuide;
+    retinaOSTrainingGuide + "\n\n" +
+
+    "SIS INVENTORY UPLOAD GUIDE:\n" +
+    sisInventoryUploadGuide + "\n\n" +
+
+    "RCOPIA 4 SPM TRAINING MANUAL:\n" +
+    rcopiaSPMTrainingManual + "\n\n";
+
+    "DRFIRST DOWNLOAD & SYNC MEDICATIONS GUIDE:\n" +
+    drfirstSyncGuide + "\n\n" +
+
 
   console.log("Knowledge payload size:", handbookContent.length);
 
