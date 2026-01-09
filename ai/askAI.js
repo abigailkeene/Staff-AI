@@ -65,17 +65,18 @@ const rcopiaSPMTrainingManual = fs.readFileSync(
   "utf8"
 );
 
-//DrFirst - How to Download Sync Medications to ICP
+//DrFirst
 const drfirstSyncGuide = fs.readFileSync("./knowledge/drfirst-download-sync-medications-to-icp.txt", "utf8");
-
-//DrFirst - Managing Prescriber Agents
 const drfirstPrescriberAgentsGuide = fs.readFileSync("./knowledge/drfirst-managing-prescriber-agents.txt", "utf8");
-
-//DrFirst - Provider ID Proofing Experian
 const drfirstEpcsIdProofingGuide = fs.readFileSync("./knowledge/drfirst-epcs-provider-id-proofing-experian.txt", "utf8");
-
-// DrFirst - Provider Prep 10-22
 const providerPrepGuide = fs.readFileSync("./knowledge/provider-prep-10-22.txt", "utf8");
+const drfirstEpcsAdminApproval = fs.readFileSync("./knowledge/drfirst-epcs-final-step-admin-approval-lac.txt", "utf8");
+const drfirstPharmacyMessagesGuide = fs.readFileSync("./knowledge/drfirst-managing-pharmacy-messages.txt", "utf8");
+
+//CustomerCentral Signup Support
+const customerPortalSetupGuide = fs.readFileSync("./knowledge/customer-portal-setup-support.txt", "utf8");
+
+
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
@@ -181,6 +182,16 @@ export async function askAI(question) {
 
     "PROVIDER PREP GO-LIVE GUIDE:\n" +
     providerPrepGuide + "\n\n" +
+
+    "DRFIRST EPCS FINAL STEP ADMIN APPROVAL GUIDE:\n" +
+    drfirstEpcsAdminApproval + "\n\n" +
+
+    "DRFIRST PHARMACY MESSAGES GUIDE:\n" +
+    drfirstPharmacyMessagesGuide + "\n\n" +
+
+    "CUSTOMER PORTAL SETUP SUPPORT GUIDE:\n" +
+    customerPortalSetupGuide + "\n\n" +
+
 
 
   console.log("Knowledge payload size:", handbookContent.length);
