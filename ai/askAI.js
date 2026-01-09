@@ -51,7 +51,7 @@ const ozurdexInjectionsSOP = fs.readFileSync("./knowledge/sop-ozurdex-injections
 const sterileBetadineSOP = fs.readFileSync("./knowledge/sop-sterile-betadine-preparation.txt", "utf8");
 const postOpScreeningSOP = fs.readFileSync("./knowledge/sop-post-op-screening.txt", "utf8");
 const sterileSubconjSOP = fs.readFileSync("./knowledge/sop-sterile-subconj-preparation.txt", "utf8");
-const optosAdvanceEditMergeSOP = fs.readFileSync("./knowledge/sop-optos-advance-edit-and-merge.txt", "utf8");
+const optosAdvanceEditMergeSOP = fs.readFileSync("./knowledge/optos-advance-edit-and-merge.txt", "utf8");
 
 // RetinaOS Training Guide
 const retinaOSTrainingGuide = fs.readFileSync("./knowledge/retinaos-training-guide.txt", "utf8");
