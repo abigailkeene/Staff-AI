@@ -1,6 +1,6 @@
-
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import path from "path";
 import fs from "fs";
 import { askAI } from "./ai/askAI.js";
@@ -8,12 +8,17 @@ import { askAI } from "./ai/askAI.js";
 dotenv.config();
 
 const app = express();
+
+// Middleware
+app.use(cors()); // <-- REQUIRED for frontend access
 app.use(express.json());
 
+// Health check
 app.get("/health", (req, res) => {
   res.send("SERVER IS ALIVE");
 });
 
+// AI endpoint
 app.post("/ask", async (req, res) => {
   const { question } = req.body;
 
@@ -32,14 +37,10 @@ app.post("/ask", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 5050;
-
 // Document download route
 app.get("/download/:file", (req, res) => {
   const fileMap = {
-    "remote-work-timesheet": "Remote_Work_Timesheet.pdf",
-    "pto-request-form": "PTO_Request_Form.pdf",
-    "expense-reimbursement": "Expense_Reimbursement_Form.pdf"
+    "remote-work-timesheet": "Remote_Time_Log_2.pdf"
   };
 
   const fileKey = req.params.file;
@@ -58,6 +59,8 @@ app.get("/download/:file", (req, res) => {
   res.download(filePath);
 });
 
+// Start server
+const port = process.env.PORT || 5050;
 app.listen(port, () => {
   console.log(`🚀 Staff AI API running on port ${port}`);
 });
