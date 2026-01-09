@@ -2,7 +2,7 @@
 
 Staff-AI is a Node.js application that provides an AI-powered internal assistant for Retina Associates staff.
 
-It is designed to serve as a secure, policy-grounded knowledge system that answers questions using internal documentation such as employee policies, procedures, SOPs, and clinical workflows.
+It is designed to serve as a secure, policy-grounded clinical and operational knowledge system that answers questions using internal documentation such as employee policies, procedures, SOPs, clinical workflows, prescribing systems, imaging platforms, inventory systems, and administrative processes.
 
 The system ensures staff receive accurate, consistent, and compliant answers based only on approved internal documents.
 
@@ -18,6 +18,16 @@ The system ensures staff receive accurate, consistent, and compliant answers bas
   - Clinical SOPs (screening, injections, laser, trials, drug handling)
   - Internal FAQs
   - athenaOne operational guidance
+  - RetinaOS training and imaging workflows
+  - Optos imaging, diagnostics, and customer portal support
+  - SIS inventory upload and management
+  - Rcopia prescribing workflows and SPM training
+  - DrFirst pharmacy message management
+  - DrFirst prescriber agent administration
+  - DrFirst EPCS onboarding, identity proofing, and compliance
+  - Provider onboarding and credentialing
+  - Customer portal, device support, and training systems
+
 - Enforces compliance rules and internal-only knowledge
 - Secure API key handling via environment variables
 - Modular Node.js architecture
@@ -35,7 +45,7 @@ The system ensures staff receive accurate, consistent, and compliant answers bas
 
 ## Architecture
 
-- `/knowledge` — Internal policy and SOP documents (txt files)
+- `/knowledge` — Internal policy, SOP, clinical, and operational documentation (txt files)
 - `/prompts` — System behavior and compliance rules
 - `askAI.js` — Core AI orchestration layer
 - `.env` — Secure API configuration
@@ -46,4 +56,5 @@ The system ensures staff receive accurate, consistent, and compliant answers bas
 
 - AI responses are restricted to internal documentation
 - No external or speculative information is permitted
-- Designed for internal clinical and administrative use only
+- Designed for internal clinical, administrative, and operational use only
+- Supports DEA, EPCS, and prescribing compliance workflows
