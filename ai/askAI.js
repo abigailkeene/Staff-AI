@@ -76,6 +76,10 @@ const drfirstPharmacyMessagesGuide = fs.readFileSync("./knowledge/drfirst-managi
 //CustomerCentral Signup Support
 const customerPortalSetupGuide = fs.readFileSync("./knowledge/customer-portal-setup-support.txt", "utf8");
 
+const itInfrastructureGuide = fs.readFileSync("./knowledge/retina-associates-it-infrastructure.txt", "utf8");
+
+const practiceOverviewGuide = fs.readFileSync("./knowledge/retina-associates-practice-overview-and-ai-guidance.txt", "utf8");
+
 
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
@@ -94,6 +98,8 @@ console.log("Loaded Optos Advance Edit & Merge SOP length:", optosAdvanceEditMer
 console.log("Loaded RetinaOS Training Guide length:", retinaOSTrainingGuide.length);
 console.log("Loaded SIS Inventory Upload Guide length:", sisInventoryUploadGuide.length);
 console.log("Loaded Rcopia Training Manual length:", rcopiaSPMTrainingManual.length);
+console.log("Loaded IT Infrastructure Guide length:", itInfrastructureGuide.length);
+console.log("Loaded Practice Overview Guide length:", practiceOverviewGuide.length);
 
 
 export async function askAI(question) {
@@ -190,6 +196,13 @@ export async function askAI(question) {
 
     "CUSTOMER PORTAL SETUP SUPPORT GUIDE:\n" +
     customerPortalSetupGuide + "\n\n" +
+
+    "IT INFRASTRUCTURE DOCUMENTATION:\n" +
+    itInfrastructureGuide + "\n\n" +
+
+    "PRACTICE OVERVIEW & AI GUIDANCE:\n" +
+    practiceOverviewGuide + "\n\n" +
+
 
 
   console.log("Knowledge payload size:", handbookContent.length);
