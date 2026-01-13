@@ -94,9 +94,6 @@ Supports documentation for:
 - askAI.js → Core AI orchestration layer
 - .env → Secure API configuration
 
-yaml
-Copy code
-
 ---
 
 ## Security & Compliance
