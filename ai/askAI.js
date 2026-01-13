@@ -84,13 +84,62 @@ const optosCloudUserGuide = fs.readFileSync("./knowledge/optoscloud-employee-use
 
 
 /* ============================
+   HOLIDAY LOGIC
+============================ */
+
+function normalizeHolidayName(name) {
+  return name.toLowerCase().replace(/day/g, "").replace(/'/g, "").trim();
+}
+
+function extractHoliday(question) {
+  const knownHolidays = [
+    "new year",
+    "new year's day",
+    "martin luther king",
+    "mlk",
+    "presidents day",
+    "washingtons birthday",
+    "memorial day",
+    "juneteenth",
+    "independence day",
+    "fourth of july",
+    "labor day",
+    "columbus day",
+    "veterans day",
+    "thanksgiving",
+    "christmas",
+    "christmas day"
+  ];
+
+  const q = question.toLowerCase();
+  return knownHolidays.find(h => q.includes(h));
+}
+
+function checkHolidayLogic(question) {
+  const holiday = extractHoliday(question);
+  if (!holiday) return null;
+
+  const normalizedHoliday = normalizeHolidayName(holiday);
+  const holidayDoc = holidaysPolicy.toLowerCase();
+
+  const isClosed = holidayDoc.includes(normalizedHoliday);
+
+  if (isClosed) {
+    return `According to the holiday policy, the practice is closed on ${holiday}.`;
+  } else {
+    return `According to the holiday policy, ${holiday} is not listed as a closure day, so the practice remains open.`;
+  }
+}
+
+
+/* ============================
    DOCUMENT REGISTRY
 ============================ */
 
 const sections = [
   {
     name: "Handbook Policies",
-    keywords: ["holiday", "christmas", "hours", "pto", "attendance", "dress code", "leave", "jury", "military", "benefits", "pay", "conduct", "safety"],
+    keywords: ["holiday", "christmas", "hours", "pto", "attendance", "dress", "leave", "jury", "military", "benefits", "pay", "conduct", "safety"],
     content: [
       attendancePolicy,
       bereavementPolicy,
@@ -186,7 +235,6 @@ function findRelevantSections(question) {
     }
   }
 
-  // fallback: send handbook if nothing matches
   if (matched.length === 0) {
     matched.push(sections[0]);
   }
@@ -200,6 +248,11 @@ function findRelevantSections(question) {
 ============================ */
 
 export async function askAI(question) {
+  const holidayAnswer = checkHolidayLogic(question);
+  if (holidayAnswer) {
+    return holidayAnswer;
+  }
+
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
   const matchedSections = findRelevantSections(question);
