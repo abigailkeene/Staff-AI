@@ -118,6 +118,7 @@ const heyexUserGuide = fs.readFileSync("./knowledge/heidelberg-heyex-employee-us
 // OptosCloud User Guide
 const optosCloudUserGuide = fs.readFileSync("./knowledge/optoscloud-employee-user-guide.txt", "utf8");
 
+
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
 console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
@@ -214,7 +215,7 @@ export async function askAI(question) {
     sisInventoryUploadGuide + "\n\n" +
 
     "RCOPIA 4 SPM TRAINING MANUAL:\n" +
-    rcopiaSPMTrainingManual + "\n\n";
+    rcopiaSPMTrainingManual + "\n\n" +
 
     "DRFIRST DOWNLOAD & SYNC MEDICATIONS GUIDE:\n" +
     drfirstSyncGuide + "\n\n" +
@@ -240,7 +241,7 @@ export async function askAI(question) {
     "PRACTICE OVERVIEW & AI GUIDANCE:\n" +
     practiceOverviewGuide + "\n\n" +
 
-    "ATHENAONE GUIDE:\n" +
+    "ATHENAONE USER GUIDE:\n" +
     athenaOneUserGuide + "\n\n" +
 
     "OUTLOOK USER GUIDE:\n" +
@@ -274,7 +275,7 @@ export async function askAI(question) {
     heyexUserGuide + "\n\n" +
 
     "OPTOSCLOUD USER GUIDE:\n" +
-    optosCloudUserGuide + "\n\n" +
+    optosCloudUserGuide + "\n\n";
 
 
 
@@ -306,4 +307,3 @@ export async function askAI(question) {
 
   return data.choices[0].message.content;
 }
-
