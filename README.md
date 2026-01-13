@@ -89,10 +89,10 @@ Supports documentation for:
 
 ## Architecture
 
-/knowledge → Internal policy, SOP, clinical, and operational documentation (TXT files)
-/prompts → System behavior, formatting, and compliance rules
-askAI.js → Core AI orchestration layer
-.env → Secure API configuration
+- /knowledge → Internal policy, SOP, clinical, and operational documentation (TXT files)
+- /prompts → System behavior, formatting, and compliance rules
+- askAI.js → Core AI orchestration layer
+- .env → Secure API configuration
 
 yaml
 Copy code
