@@ -15,7 +15,11 @@ console.log("DEBUG apiVersion:", apiVersion);
 // Load system prompt
 const systemPrompt = fs.readFileSync("./prompts/systemPrompt.txt", "utf8");
 
-// Load handbook knowledge
+/* ============================
+   LOAD ALL DOCUMENTS (UNCHANGED)
+============================ */
+
+// Handbook
 const attendancePolicy = fs.readFileSync("./knowledge/attendance.txt", "utf8");
 const bereavementPolicy = fs.readFileSync("./knowledge/bereavement-leave.txt", "utf8");
 const contactsInfo = fs.readFileSync("./knowledge/contacts.txt", "utf8");
@@ -32,13 +36,11 @@ const leavePolicy = fs.readFileSync("./knowledge/additional-leave-policies.txt",
 const operationsPolicy = fs.readFileSync("./knowledge/workplace-operations-and-discipline.txt", "utf8");
 const safetyPolicy = fs.readFileSync("./knowledge/workplace-safety-and-drug-policy.txt", "utf8");
 
-// athenaOne guide
+// Guides & SOPs
 const athenaOneGuide = fs.readFileSync("./knowledge/athenaOne-homepage.txt", "utf8");
-
-// Internal FAQ
+const athenaOneUserGuide = fs.readFileSync("./knowledge/athenaone-employee-user-guide.txt", "utf8");
 const internalFAQ = fs.readFileSync("./knowledge/internal-faq.txt", "utf8");
 
-// SOPs
 const drugItemTransfer = fs.readFileSync("./knowledge/drug-item-transfer.txt", "utf8");
 const endophthalmitisSOP = fs.readFileSync("./knowledge/sop-endophthalmitis-injections.txt", "utf8");
 const followUpScreeningSOP = fs.readFileSync("./knowledge/sop-follow-up-screening.txt", "utf8");
@@ -53,19 +55,10 @@ const postOpScreeningSOP = fs.readFileSync("./knowledge/sop-post-op-screening.tx
 const sterileSubconjSOP = fs.readFileSync("./knowledge/sop-sterile-subconj-preparation.txt", "utf8");
 const optosAdvanceEditMergeSOP = fs.readFileSync("./knowledge/optos-advance-edit-and-merge.txt", "utf8");
 
-// RetinaOS Training Guide
 const retinaOSTrainingGuide = fs.readFileSync("./knowledge/retinaos-training-guide.txt", "utf8");
-
-// SIS Inventory Upload Guide
 const sisInventoryUploadGuide = fs.readFileSync("./knowledge/how-to-upload-new-items-sis.txt", "utf8");
+const rcopiaSPMTrainingManual = fs.readFileSync("./knowledge/rcopia-4-spm-training-manual.txt", "utf8");
 
-// Rcopia Training Manual (NEW)
-const rcopiaSPMTrainingManual = fs.readFileSync(
-  "./knowledge/rcopia-4-spm-training-manual.txt",
-  "utf8"
-);
-
-//DrFirst
 const drfirstSyncGuide = fs.readFileSync("./knowledge/drfirst-download-sync-medications-to-icp.txt", "utf8");
 const drfirstPrescriberAgentsGuide = fs.readFileSync("./knowledge/drfirst-managing-prescriber-agents.txt", "utf8");
 const drfirstEpcsIdProofingGuide = fs.readFileSync("./knowledge/drfirst-epcs-provider-id-proofing-experian.txt", "utf8");
@@ -73,217 +66,154 @@ const providerPrepGuide = fs.readFileSync("./knowledge/provider-prep-10-22.txt",
 const drfirstEpcsAdminApproval = fs.readFileSync("./knowledge/drfirst-epcs-final-step-admin-approval-lac.txt", "utf8");
 const drfirstPharmacyMessagesGuide = fs.readFileSync("./knowledge/drfirst-managing-pharmacy-messages.txt", "utf8");
 
-//CustomerCentral Signup Support
 const customerPortalSetupGuide = fs.readFileSync("./knowledge/customer-portal-setup-support.txt", "utf8");
-
-//IT Infrasturcture
 const itInfrastructureGuide = fs.readFileSync("./knowledge/retina-associates-it-infrastructure.txt", "utf8");
-
-//Practice Overview and AI Guidance
 const practiceOverviewGuide = fs.readFileSync("./knowledge/retina-associates-practice-overview-and-ai-guidance.txt", "utf8");
 
-// AthenaOne User Guide
-const athenaOneUserGuide = fs.readFileSync("./knowledge/athenaone-employee-user-guide.txt", "utf8");
-
-// Outlook User Guide
 const outlookUserGuide = fs.readFileSync("./knowledge/outlook-employee-user-guide.txt", "utf8");
-
-// IT Glue User Guide
 const itGlueUserGuide = fs.readFileSync("./knowledge/it-glue-employee-user-guide.txt", "utf8");
-
-// Datto User Guide
 const dattoUserGuide = fs.readFileSync("./knowledge/datto-employee-user-guide.txt", "utf8");
-
-// Autotask User Guide
 const autotaskUserGuide = fs.readFileSync("./knowledge/autotask-employee-user-guide.txt", "utf8");
-
-// Microsoft Entra User Guide
 const entraUserGuide = fs.readFileSync("./knowledge/microsoft-entra-employee-user-guide.txt", "utf8");
-
-// PX Technology User Guide
 const pxTechnologyUserGuide = fs.readFileSync("./knowledge/px-technology-employee-user-guide.txt", "utf8");
-
-// Nextech User Guide
 const mdiUserGuide = fs.readFileSync("./knowledge/nextech-intellechart-mdi-employee-user-guide.txt", "utf8");
-
-// iMonnit Temperature Sensors User Guide
 const iMonnitUserGuide = fs.readFileSync("./knowledge/imonitt-temperature-sensors-employee-user-guide.txt", "utf8");
-
-// GoTo User Guide
 const gotoUserGuide = fs.readFileSync("./knowledge/goto-phone-system-employee-user-guide.txt", "utf8");
-
-// Heyex User Guide
 const heyexUserGuide = fs.readFileSync("./knowledge/heidelberg-heyex-employee-user-guide.txt", "utf8");
-
-// OptosCloud User Guide
 const optosCloudUserGuide = fs.readFileSync("./knowledge/optoscloud-employee-user-guide.txt", "utf8");
 
 
-// Debug verification
-console.log("Loaded drug SOP length:", drugItemTransfer.length);
-console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
-console.log("Loaded follow-up SOP length:", followUpScreeningSOP.length);
-console.log("Loaded injection preferences SOP length:", injectionPreferencesSOP.length);
-console.log("Loaded injection screening SOP length:", injectionScreeningSOP.length);
-console.log("Loaded laser SOP length:", laserProcedureSOP.length);
-console.log("Loaded LOTUS Trial SOP length:", lotusTrialSOP.length);
-console.log("Loaded OCT SOP length:", octProcedureSOP.length);
-console.log("Loaded Ozurdex SOP length:", ozurdexInjectionsSOP.length);
-console.log("Loaded Sterile Betadine SOP length:", sterileBetadineSOP.length);
-console.log("Loaded Post-Op Screening SOP length:", postOpScreeningSOP.length);
-console.log("Loaded Sterile Subconj SOP length:", sterileSubconjSOP.length);
-console.log("Loaded Optos Advance Edit & Merge SOP length:", optosAdvanceEditMergeSOP.length);
-console.log("Loaded RetinaOS Training Guide length:", retinaOSTrainingGuide.length);
-console.log("Loaded SIS Inventory Upload Guide length:", sisInventoryUploadGuide.length);
-console.log("Loaded Rcopia Training Manual length:", rcopiaSPMTrainingManual.length);
-console.log("Loaded IT Infrastructure Guide length:", itInfrastructureGuide.length);
-console.log("Loaded Practice Overview Guide length:", practiceOverviewGuide.length);
+/* ============================
+   DOCUMENT REGISTRY
+============================ */
 
+const sections = [
+  {
+    name: "Handbook Policies",
+    keywords: ["holiday", "christmas", "hours", "pto", "attendance", "dress code", "leave", "jury", "military", "benefits", "pay", "conduct", "safety"],
+    content: [
+      attendancePolicy,
+      bereavementPolicy,
+      contactsInfo,
+      dressCodePolicy,
+      holidaysPolicy,
+      hoursPolicy,
+      juryDutyPolicy,
+      militaryLeavePolicy,
+      ptoPolicy,
+      coreValuesPolicy,
+      conductPolicy,
+      compensationPolicy,
+      leavePolicy,
+      operationsPolicy,
+      safetyPolicy
+    ]
+  },
+  {
+    name: "AthenaOne",
+    keywords: ["athena", "athenaone", "patient", "chart", "schedule"],
+    content: [athenaOneGuide, athenaOneUserGuide]
+  },
+  {
+    name: "SOPs",
+    keywords: ["sop", "procedure", "injection", "laser", "oct", "ozurdex", "betadine", "subconj", "screening", "trial"],
+    content: [
+      drugItemTransfer,
+      endophthalmitisSOP,
+      followUpScreeningSOP,
+      injectionPreferencesSOP,
+      laserProcedureSOP,
+      lotusTrialSOP,
+      injectionScreeningSOP,
+      octProcedureSOP,
+      ozurdexInjectionsSOP,
+      sterileBetadineSOP,
+      postOpScreeningSOP,
+      sterileSubconjSOP,
+      optosAdvanceEditMergeSOP
+    ]
+  },
+  {
+    name: "IT & Systems",
+    keywords: ["email", "outlook", "login", "password", "vpn", "datto", "autotask", "entra", "it glue", "px", "nextech", "mdi", "imonnit", "goto", "heyex", "optos"],
+    content: [
+      outlookUserGuide,
+      itGlueUserGuide,
+      dattoUserGuide,
+      autotaskUserGuide,
+      entraUserGuide,
+      pxTechnologyUserGuide,
+      mdiUserGuide,
+      iMonnitUserGuide,
+      gotoUserGuide,
+      heyexUserGuide,
+      optosCloudUserGuide,
+      itInfrastructureGuide
+    ]
+  },
+  {
+    name: "Training & Practice",
+    keywords: ["training", "retinaos", "sis", "inventory", "rcopia", "drfirst", "provider", "portal", "practice"],
+    content: [
+      retinaOSTrainingGuide,
+      sisInventoryUploadGuide,
+      rcopiaSPMTrainingManual,
+      drfirstSyncGuide,
+      drfirstPrescriberAgentsGuide,
+      drfirstEpcsIdProofingGuide,
+      providerPrepGuide,
+      drfirstEpcsAdminApproval,
+      drfirstPharmacyMessagesGuide,
+      customerPortalSetupGuide,
+      practiceOverviewGuide,
+      internalFAQ
+    ]
+  }
+];
+
+
+/* ============================
+   SEARCH ENGINE
+============================ */
+
+function findRelevantSections(question) {
+  const q = question.toLowerCase();
+  const matched = [];
+
+  for (const section of sections) {
+    if (section.keywords.some(keyword => q.includes(keyword))) {
+      matched.push(section);
+    }
+  }
+
+  // fallback: send handbook if nothing matches
+  if (matched.length === 0) {
+    matched.push(sections[0]);
+  }
+
+  return matched;
+}
+
+
+/* ============================
+   MAIN AI FUNCTION
+============================ */
 
 export async function askAI(question) {
   const url = `${endpoint}openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
-  const handbookContent =
-    "INTERNAL DOCUMENTATION:\n\n" +
+  const matchedSections = findRelevantSections(question);
 
-    attendancePolicy + "\n\n" +
-    bereavementPolicy + "\n\n" +
-    contactsInfo + "\n\n" +
-    dressCodePolicy + "\n\n" +
-    holidaysPolicy + "\n\n" +
-    hoursPolicy + "\n\n" +
-    juryDutyPolicy + "\n\n" +
-    militaryLeavePolicy + "\n\n" +
-    ptoPolicy + "\n\n" +
+  const context = matchedSections
+    .map(section => `SECTION: ${section.name}\n\n${section.content.join("\n\n")}`)
+    .join("\n\n");
 
-    coreValuesPolicy + "\n\n" +
-    conductPolicy + "\n\n" +
-    compensationPolicy + "\n\n" +
-    leavePolicy + "\n\n" +
-    operationsPolicy + "\n\n" +
-    safetyPolicy + "\n\n" +
-
-    "ATHENAONE GUIDE:\n" +
-    athenaOneGuide + "\n\n" +
-
-    "INTERNAL FAQ:\n" +
-    internalFAQ + "\n\n" +
-
-    "DRUG ITEM TRANSFER SOP:\n" +
-    drugItemTransfer + "\n\n" +
-
-    "ENDOPHTHALMITIS INJECTION SOP:\n" +
-    endophthalmitisSOP + "\n\n" +
-
-    "FOLLOW-UP SCREENING SOP:\n" +
-    followUpScreeningSOP + "\n\n" +
-
-    "INJECTION PREFERENCES SOP:\n" +
-    injectionPreferencesSOP + "\n\n" +
-
-    "LASER PROCEDURE SOP:\n" +
-    laserProcedureSOP + "\n\n" +
-
-    "INJECTION SCREENING SOP:\n" +
-    injectionScreeningSOP + "\n\n" +
-
-    "LOTUS TRIAL SOP:\n" +
-    lotusTrialSOP + "\n\n" +
-
-    "OCT PROCEDURE SOP:\n" +
-    octProcedureSOP + "\n\n" +
-
-    "OZURDEX INJECTIONS SOP:\n" +
-    ozurdexInjectionsSOP + "\n\n" +
-
-    "STERILE BETADINE PREPARATION SOP:\n" +
-    sterileBetadineSOP + "\n\n" +
-
-    "POST-OP SCREENING SOP:\n" +
-    postOpScreeningSOP + "\n\n" +
-
-    "STERILE SUBCONJUNCTIVAL INJECTION PREPARATION SOP:\n" +
-    sterileSubconjSOP + "\n\n" +
-
-    "OPTOS ADVANCE EDIT & MERGE PATIENTS SOP:\n" +
-    optosAdvanceEditMergeSOP + "\n\n" +
-
-    "RETINAOS TRAINING GUIDE:\n" +
-    retinaOSTrainingGuide + "\n\n" +
-
-    "SIS INVENTORY UPLOAD GUIDE:\n" +
-    sisInventoryUploadGuide + "\n\n" +
-
-    "RCOPIA 4 SPM TRAINING MANUAL:\n" +
-    rcopiaSPMTrainingManual + "\n\n" +
-
-    "DRFIRST DOWNLOAD & SYNC MEDICATIONS GUIDE:\n" +
-    drfirstSyncGuide + "\n\n" +
-
-    "DRFIRST MANAGING PRESCRIBER AGENTS GUIDE:\n" +
-    drfirstPrescriberAgentsGuide + "\n\n" +
-
-    "PROVIDER PREP GO-LIVE GUIDE:\n" +
-    providerPrepGuide + "\n\n" +
-
-    "DRFIRST EPCS FINAL STEP ADMIN APPROVAL GUIDE:\n" +
-    drfirstEpcsAdminApproval + "\n\n" +
-
-    "DRFIRST PHARMACY MESSAGES GUIDE:\n" +
-    drfirstPharmacyMessagesGuide + "\n\n" +
-
-    "CUSTOMER PORTAL SETUP SUPPORT GUIDE:\n" +
-    customerPortalSetupGuide + "\n\n" +
-
-    "IT INFRASTRUCTURE DOCUMENTATION:\n" +
-    itInfrastructureGuide + "\n\n" +
-
-    "PRACTICE OVERVIEW & AI GUIDANCE:\n" +
-    practiceOverviewGuide + "\n\n" +
-
-    "ATHENAONE USER GUIDE:\n" +
-    athenaOneUserGuide + "\n\n" +
-
-    "OUTLOOK USER GUIDE:\n" +
-    outlookUserGuide + "\n\n" +
-
-    "IT GLUE USER GUIDE:\n" +
-    itGlueUserGuide + "\n\n" +
-
-    "DATTO USER GUIDE:\n" +
-    dattoUserGuide + "\n\n" +
-
-    "AUTOTASK USER GUIDE:\n" +
-    autotaskUserGuide + "\n\n" +
-
-    "MICROSOFT ENTRA USER GUIDE:\n" +
-    entraUserGuide + "\n\n" +
-
-    "PX TECHNOLOGY USER GUIDE:\n" +
-    pxTechnologyUserGuide + "\n\n" +
-
-    "NEXTECH INTELLECHART (MDI) USER GUIDE:\n" +
-    mdiUserGuide + "\n\n" +
-
-    "IMONNIT TEMPERATURE MONITORING USER GUIDE:\n" +
-    iMonnitUserGuide + "\n\n" +
-
-    "GOTO PHONE SYSTEM USER GUIDE:\n" +
-    gotoUserGuide + "\n\n" +
-
-    "HEIDELBERG HEYEX USER GUIDE:\n" +
-    heyexUserGuide + "\n\n" +
-
-    "OPTOSCLOUD USER GUIDE:\n" +
-    optosCloudUserGuide + "\n\n";
-
-
-
-  console.log("Knowledge payload size:", handbookContent.length);
+  console.log("Matched sections:", matchedSections.map(s => s.name));
+  console.log("Context size:", context.length);
 
   const messages = [
     { role: "system", content: systemPrompt },
-    { role: "system", content: handbookContent },
+    { role: "system", content: context },
     { role: "user", content: question }
   ];
 
