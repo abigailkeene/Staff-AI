@@ -76,9 +76,47 @@ const drfirstPharmacyMessagesGuide = fs.readFileSync("./knowledge/drfirst-managi
 //CustomerCentral Signup Support
 const customerPortalSetupGuide = fs.readFileSync("./knowledge/customer-portal-setup-support.txt", "utf8");
 
+//IT Infrasturcture
 const itInfrastructureGuide = fs.readFileSync("./knowledge/retina-associates-it-infrastructure.txt", "utf8");
 
+//Practice Overview and AI Guidance
 const practiceOverviewGuide = fs.readFileSync("./knowledge/retina-associates-practice-overview-and-ai-guidance.txt", "utf8");
+
+// AthenaOne User Guide
+const athenaOneUserGuide = fs.readFileSync("./knowledge/athenaone-employee-user-guide.txt", "utf8");
+
+// Outlook User Guide
+const outlookUserGuide = fs.readFileSync("./knowledge/outlook-employee-user-guide.txt", "utf8");
+
+// IT Glue User Guide
+const itGlueUserGuide = fs.readFileSync("./knowledge/it-glue-employee-user-guide.txt", "utf8");
+
+// Datto User Guide
+const dattoUserGuide = fs.readFileSync("./knowledge/datto-employee-user-guide.txt", "utf8");
+
+// Autotask User Guide
+const autotaskUserGuide = fs.readFileSync("./knowledge/autotask-employee-user-guide.txt", "utf8");
+
+// Microsoft Entra User Guide
+const entraUserGuide = fs.readFileSync("./knowledge/microsoft-entra-employee-user-guide.txt", "utf8");
+
+// PX Technology User Guide
+const pxTechnologyUserGuide = fs.readFileSync("./knowledge/px-technology-employee-user-guide.txt", "utf8");
+
+// Nextech User Guide
+const mdiUserGuide = fs.readFileSync("./knowledge/nextech-intellechart-mdi-employee-user-guide.txt", "utf8");
+
+// iMonnit Temperature Sensors User Guide
+const iMonnitUserGuide = fs.readFileSync("./knowledge/imonitt-temperature-sensors-employee-user-guide.txt", "utf8");
+
+// GoTo User Guide
+const gotoUserGuide = fs.readFileSync("./knowledge/goto-phone-system-employee-user-guide.txt", "utf8");
+
+// Heyex User Guide
+const heyexUserGuide = fs.readFileSync("./knowledge/heidelberg-heyex-employee-user-guide.txt", "utf8");
+
+// OptosCloud User Guide
+const optosCloudUserGuide = fs.readFileSync("./knowledge/optoscloud-employee-user-guide.txt", "utf8");
 
 
 // Debug verification
@@ -202,6 +240,42 @@ export async function askAI(question) {
 
     "PRACTICE OVERVIEW & AI GUIDANCE:\n" +
     practiceOverviewGuide + "\n\n" +
+
+    "ATHENAONE GUIDE:\n" +
+    athenaOneUserGuide + "\n\n" +
+
+    "OUTLOOK USER GUIDE:\n" +
+    outlookUserGuide + "\n\n" +
+
+    "IT GLUE USER GUIDE:\n" +
+    itGlueUserGuide + "\n\n" +
+
+    "DATTO USER GUIDE:\n" +
+    dattoUserGuide + "\n\n" +
+
+    "AUTOTASK USER GUIDE:\n" +
+    autotaskUserGuide + "\n\n" +
+
+    "MICROSOFT ENTRA USER GUIDE:\n" +
+    entraUserGuide + "\n\n" +
+
+    "PX TECHNOLOGY USER GUIDE:\n" +
+    pxTechnologyUserGuide + "\n\n" +
+
+    "NEXTECH INTELLECHART (MDI) USER GUIDE:\n" +
+    mdiUserGuide + "\n\n" +
+
+    "IMONNIT TEMPERATURE MONITORING USER GUIDE:\n" +
+    iMonnitUserGuide + "\n\n" +
+
+    "GOTO PHONE SYSTEM USER GUIDE:\n" +
+    gotoUserGuide + "\n\n" +
+
+    "HEIDELBERG HEYEX USER GUIDE:\n" +
+    heyexUserGuide + "\n\n" +
+
+    "OPTOSCLOUD USER GUIDE:\n" +
+    optosCloudUserGuide + "\n\n" +
 
 
 
