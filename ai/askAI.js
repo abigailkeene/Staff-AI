@@ -118,7 +118,6 @@ const heyexUserGuide = fs.readFileSync("./knowledge/heidelberg-heyex-employee-us
 // OptosCloud User Guide
 const optosCloudUserGuide = fs.readFileSync("./knowledge/optoscloud-employee-user-guide.txt", "utf8");
 
-
 // Debug verification
 console.log("Loaded drug SOP length:", drugItemTransfer.length);
 console.log("Loaded endophthalmitis SOP length:", endophthalmitisSOP.length);
@@ -307,3 +306,4 @@ export async function askAI(question) {
 
   return data.choices[0].message.content;
 }
+
