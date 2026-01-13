@@ -116,7 +116,6 @@ Copy code
 
 Staff-AI exists to:
 
-- Reduce training time  
 - Improve documentation access  
 - Standardize workflows  
 - Reduce support burden  
