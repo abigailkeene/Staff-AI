@@ -83,6 +83,10 @@ const heyexUserGuide = fs.readFileSync("./knowledge/heidelberg-heyex-employee-us
 const optosCloudUserGuide = fs.readFileSync("./knowledge/optoscloud-employee-user-guide.txt", "utf8");
 const retinaScreeningAbbreviationsGuide = fs.readFileSync("./knowledge/retina-screening-abbreviations-drugs-and-clinical-workflows.txt", "utf8");
 
+const pxconnectCheatSheet = fs.readFileSync("./knowledge/pxconnect-cheat-sheet.txt", "utf8");
+const pxconnectPortalGuide = fs.readFileSync("./knowledge/pxconnect-client-portal-best-practices.txt", "utf8");
+const pxconnectRemoteSignature = fs.readFileSync("./knowledge/pxconnect-remote-signature-feature.txt", "utf8");
+
 
 /* ============================
    HOLIDAY LOGIC
@@ -185,7 +189,7 @@ const sections = [
       postOpScreeningSOP,
       sterileSubconjSOP,
       optosAdvanceEditMergeSOP,
-      retinaScreeningAbbreviationsGuide  
+      retinaScreeningAbbreviationsGuide
     ]
   },
   {
@@ -221,7 +225,10 @@ const sections = [
       drfirstPharmacyMessagesGuide,
       customerPortalSetupGuide,
       practiceOverviewGuide,
-      internalFAQ
+      internalFAQ,
+      pxconnectCheatSheet,
+      pxconnectPortalGuide,
+      pxconnectRemoteSignature
     ]
   }
 ];
