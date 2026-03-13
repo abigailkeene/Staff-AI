@@ -3,7 +3,7 @@ import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
 
-const endpoint = process.env.AZURE_OPENAI_ENDPOINT.trim();
+const endpoint = process.env.AZURE_OPENAI_ENDPOINT.trim() + "/";
 const apiKey = process.env.AZURE_OPENAI_API_KEY;
 const deployment = process.env.AZURE_OPENAI_DEPLOYMENT_NAME;
 const apiVersion = process.env.AZURE_OPENAI_API_VERSION;
